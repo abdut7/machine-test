@@ -1,9 +1,6 @@
 import {
     jwtVerify
 } from "../helpers";
-import {
-    objOpenAPI
-} from '../../common/constants'
 import errHandler from "../helpers/errHandler";
 export async function jwtTokenChecking(req, res, next) {
     let objResponceType = {
@@ -35,11 +32,6 @@ export async function jwtTokenChecking(req, res, next) {
                 //No loginn
             }
         } else {
-            //Open api cheking
-            //if not an open api
-            if (objOpenAPI[req.originalUrl])
-                next()
-            else
                 return res
                     .status(401)
                     .set(objResponceType)
